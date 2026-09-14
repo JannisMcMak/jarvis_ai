@@ -20,10 +20,12 @@ COPY . .
 
 RUN uv sync --locked
 
-# Fall back to the example config if a real server.yaml wasn't provided
-# in the build context. You'll still need to edit voice.voice_id / machines:
-# either before building or via a mounted config volume at runtime.
-RUN [ -f config/server.yaml ] || cp config/server.example.yaml config/server.yaml
+# Entrypoint only falls back to the example config at CONTAINER START, and
+# only if neither a real config/server.yaml was baked in nor mounted via
+# -v. It never fails the build if config/server.example.yaml is missing -
+# see entrypoint.sh.
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Pre-download the Whisper model into the image so `docker run` doesn't
 # stall 60-90s on first start. Override with --build-arg WHISPER_MODEL=...
