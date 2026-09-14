@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/server
+WORKDIR /app
 
 COPY . .
 
@@ -48,4 +48,4 @@ EXPOSE 8765
 VOLUME ["/app/server/config"]
 
 ENTRYPOINT ["entrypoint.sh"]
-CMD ["uv", "run", "server.py"]
+CMD ["uv", "run", "server/server.py"]
