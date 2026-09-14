@@ -47,4 +47,4 @@ EXPOSE 8765
 #     jarvis-voice-server
 VOLUME ["/app/server/config"]
 
-CMD ["uv", "run", "server.py"]
+CMD ["uv", "run", "server/server.py"]
