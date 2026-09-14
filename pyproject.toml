@@ -1,0 +1,29 @@
+[project]
+name = "jarvis-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jannis Lehner", email = "lehner.jannis@web.de" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic>=1.5.0",
+    "fastapi>=0.141.1",
+    "faster-whisper>=1.2.1",
+    "numpy>=2.5.3",
+    "psutil>=7.2.2",
+    "pyyaml>=6.0.3",
+    "realtimestt>=1.1.2",
+    "requests>=2.34.2",
+    "silero-vad>=6.2.1",
+    "uvicorn>=0.53.0",
+    "websockets>=16.0",
+]
+
+[project.scripts]
+jarvis-ai = "jarvis_ai:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"

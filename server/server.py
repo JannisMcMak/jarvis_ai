@@ -98,18 +98,6 @@ SECRET_RES = [
 ]
 
 
-def load_env() -> None:
-    for path in ENV_PATHS:
-        if not path.exists():
-            continue
-        for line in path.read_text(encoding="utf-8", errors="ignore").splitlines():
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, value = line.split("=", 1)
-            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
-
 def load_config() -> dict:
     return yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
 
@@ -624,7 +612,6 @@ class VoicePipelineServer:
         print("TURN TIMING", json.dumps(summary, ensure_ascii=False), flush=True)
 
 
-load_env()
 CFG = load_config()
 HERMES = HermesAPI(CFG)   # lightweight API client - independent of the STT pipeline
 PIPELINE: VoicePipelineServer | None = None
