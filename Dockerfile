@@ -47,4 +47,5 @@ EXPOSE 8765
 #     jarvis-voice-server
 VOLUME ["/app/server/config"]
 
-CMD ["uv", "run", "server/server.py"]
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["uv", "run", "server.py"]
