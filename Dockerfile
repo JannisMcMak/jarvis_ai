@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ghcr.io/astral-sh/uv:python3.12-alpine
+FROM ghcr.io/astral-sh/uv:python3.12-trixie
 
 # System deps:
 #   ffmpeg / libsndfile1 -> audio decoding for faster-whisper / RealtimeSTT
